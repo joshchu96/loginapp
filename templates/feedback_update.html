@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Feedback{% endblock %}
+
+{% block content %}
+    <h1>Edit Feedback</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.title.label }}: {{ form.title }}
+        </div>
+        <div>
+            {{ form.content.label }}: {{ form.content }}
+        </div>
+        <button type="submit">Update Feedback</button>
+    </form>
+
+    <form action="/feedback/{{feedback.id}}/delete">
+        <button>Delete Feedback</button>
+    </form>
+{% endblock %}

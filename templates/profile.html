@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block title %} Secret Page {%endblock%}  
+
+{% block content%} 
+    <h1>Secret Page</h1>
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.first_name}}</p>
+    <p>{{user.last_name}}</p>    
+
+    {% if feedbacks %} 
+        {% for feedback in feedbacks %} 
+            <form method ="POST">
+                <p><b>{{ feedback.title }}</b></p>
+                <p>{{ feedback.content }}</p>
+
+                <form action="/users/{{user.username}}/feedback/add, method="POST">
+                    <button> Add more feedback </button>
+                </form>
+
+                <form action="/users/{{user.username}}/delete", method="POST">
+                    <button> Delete Feedback </button>
+                </form>
+
+            </form>
+        {%endfor%} 
+
+    {%endif%} 
+
+{% endblock %} 
